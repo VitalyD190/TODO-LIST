@@ -5,8 +5,8 @@ from rest_framework.test import APITestCase
 from api.models import Task
 
 def createItem(client):
-    url = reverse('task-list')
-    data = {'title' : 'Walk the dog'}
+    url = reverse('task-create')
+    data = {'title' : 'Walk the dog', 'completed': True}
     return client.post(url, data, format='json')
 
 
@@ -25,74 +25,3 @@ class TestCreateTodoItem(APITestCase):
 
     def test_item_has_correct_title(self):
         self.assertEqual(Task.objects.get().title, 'Walk the dog')
-
-class TestsUpdateTodoItem(APITestCase):
-    """
-        Ensure we can update an existing todo item using PUT
-    """
-
-    def setUp(self):
-        response = createItem(self.client)
-        self.assertEqual(Task.objects.get().completed, False)
-        url = response['Location']
-        data = {'title': 'Walk the dog', 'completed': True}
-        self.response = self.client.put(url, data, format='json')
-    
-    def test_received_200_created_status_code(self):
-        self.assertEqual(self.response.status_code, status.HTTP_200_OK)
-
-    def test_item_was_updated(self):
-        self.assertEqual(Task.objects.get().completed, True)
-
-class TestsPatchTodoItem(APITestCase):
-    """
-        Ensure we can update an existing todo item using PATCH
-    """
-
-    def setUp(self):
-        response = createItem(self.client)
-        self.assertEqual(Task.objects.get().completed, False)
-        url = response['Location']
-        data = {'title': 'Walk the dog', 'completed': True}
-        self.response = self.client.patch(url, data, format='json')
-    
-    def test_received_200_created_status_code(self):
-        self.assertEqual(self.response.status_code, status.HTTP_200_OK)
-
-    def test_item_was_updated(self):
-        self.assertEqual(Task.objects.get().completed, True)
-
-class TestsDeleteTodoItem(APITestCase):
-    """
-        Enusre we can delete a todo item
-    """
-
-    def setUp(self):
-        response = createItem(self.client)
-        self.assertEqual(Task.objects.count(), 1)
-        url = response['Location']
-        self.response = self.client.delete(url)
-
-    def test_received_204_no_content_status_code(self):
-        self.assertEqual(self.response.status_code, status.HTTP_204_NO_CONTENT)
-
-    def test_the_item_was_deleted(self):
-        self.assertEqual(Task.objects.count(), 0)
-
-
-class TestsDeleteAllItems(APITestCase):
-    """
-        Ensure we can delete all items
-    
-    """
-
-    def setUp(self):
-        createItem(self.client)
-        self.assertEqual(Task.objects.count(), 2)
-        self.response = self.client.delete(reverse('task-list'))
-
-    def test_received_204_no_content_status_code(self):
-        self.assertEqual(self.response.status_code, status.HTTP_204_NO_CONTENT)
-
-    def test_all_items_were_deleted(self):
-        self.assertEqual(Task.objects.count(), 0)

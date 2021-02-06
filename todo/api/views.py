@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from rest_framework import status
 
 
 from rest_framework.decorators import api_view
@@ -48,7 +49,7 @@ def taskCreate(request):
 
     if serializer.is_valid():
         serializer.save()
-    return Response(serializer.data)
+    return Response(serializer.data, status.HTTP_201_CREATED)
 
 
 
