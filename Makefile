@@ -2,7 +2,7 @@
 VIRTUALENV := python3 -m venv
 PIP := venv/bin/pip
 
-all: create venv install run
+all: clean create venv install run
  
 create:
 	$(VIRTUALENV) venv
@@ -23,5 +23,4 @@ run:
 	python manage.py runserver;
 
 clean: 
-	rm -rf venv; \
-	find . -name "*.pyc" -delete;
+	rm -rf venv;
