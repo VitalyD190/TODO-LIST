@@ -1,93 +1,166 @@
 {
-	"variables": [],
 	"info": {
+		"_postman_id": "d6f16851-7280-45ce-aa57-15d45aababc1",
 		"name": "todo api",
-		"_postman_id": "ebca3a51-7632-577c-86d1-49deb82c9bb5",
-		"description": "",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Options",
 			"request": {
-				"url": "http://127.0.0.1:8000/api/",
 				"method": "GET",
 				"header": [],
-				"body": {},
-				"description": ""
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Create new tasks",
 			"request": {
-				"url": "http://127.0.0.1:8000/api/task-create\n",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"title\": \"Pushaps\",\r\n    \"completed\": \"false\"\r\n}"
 				},
-				"description": ""
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/task-create\n",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"task-create\n"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Update tasks",
 			"request": {
-				"url": "http://127.0.0.1:8000/api/task-update/1",
 				"method": "PUT",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"title\": \"Walk\",\r\n    \"completed\": \"true\"\r\n}"
 				},
-				"description": ""
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/task-update/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"task-update",
+						"1"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Delete task",
 			"request": {
-				"url": "http://127.0.0.1:8000/api/task-delete/6\n",
 				"method": "DELETE",
 				"header": [],
-				"body": {},
-				"description": ""
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/task-delete/7\n",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"task-delete",
+						"7\n"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Get all tasks",
 			"request": {
-				"url": "http://127.0.0.1:8000/api/task-list",
 				"method": "GET",
 				"header": [],
-				"body": {},
-				"description": ""
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/task-list",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"task-list"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Get task",
 			"request": {
-				"url": "http://127.0.0.1:8000/api/task-detail/2",
 				"method": "GET",
 				"header": [],
-				"body": {},
-				"description": ""
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/task-detail/3",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"task-detail",
+						"3"
+					]
+				}
 			},
 			"response": []
 		}
